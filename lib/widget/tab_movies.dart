@@ -1,6 +1,7 @@
 import 'package:app_movies/api/api.dart';
 import 'package:app_movies/data/constants.dart';
 import 'package:app_movies/models/movies.dart';
+import 'package:app_movies/screen/detal_screen.dart';
 import 'package:flutter/material.dart';
 
 class TabMovies extends StatefulWidget {
@@ -45,7 +46,7 @@ class _TabMoviesState extends State<TabMovies> {
             future: moviesData,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text(snapshot.error.toString()));
               } else if (snapshot.hasData) {
@@ -63,16 +64,27 @@ class _TabMoviesState extends State<TabMovies> {
                       padding: const EdgeInsets.all(8.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          '${Constants.imagePath}${movies[index].posterPath}',
-                          fit: BoxFit.cover,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailsScreen(
+                                    movieId: snapshot.data![index].id,
+                                  ),
+                                ));
+                          },
+                          child: Image.network(
+                            '${Constants.imagePath}${movies[index].posterPath}',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     );
                   },
                 );
               } else {
-                return Center(child: Text("No data available"));
+                return const Center(child: Text("No data available"));
               }
             },
           ),

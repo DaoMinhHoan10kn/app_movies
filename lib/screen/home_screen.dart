@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen>
                       fontSize: 18,
                       fontWeight: FontWeight.w600))),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+            padding: EdgeInsets.symmetric(horizontal: 22, vertical: 5),
             child: TextField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(

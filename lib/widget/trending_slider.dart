@@ -15,7 +15,7 @@ class TrendingSlider extends StatelessWidget {
         child: CarouselSlider.builder(
             itemCount: 10,
             options: CarouselOptions(
-              height: 300,
+              height: 280,
               autoPlay: true,
               viewportFraction: 0.55,
               pageSnapping: true,
@@ -31,7 +31,7 @@ class TrendingSlider extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetailsScreen(
-                            movies: snapshot.data[itemIndex],
+                            movieId: snapshot.data[itemIndex].id,
                           ),
                         ));
                   },
