@@ -5,6 +5,7 @@ class Movies {
   String originalTitle;
   String overView;
   String posterPath;
+  int? runTime;
   String releaseDate;
   double voteAverage;
 
@@ -15,6 +16,7 @@ class Movies {
     required this.originalTitle,
     required this.overView,
     required this.posterPath,
+    required this.runTime,
     required this.releaseDate,
     required this.voteAverage,
   });
@@ -28,7 +30,9 @@ class Movies {
       originalTitle:
           json["original_title"], // Đảm bảo tên trường phù hợp với JSON
       overView: json["overview"], // Đảm bảo tên trường phù hợp với JSON
-      posterPath: json["poster_path"], // Đảm bảo tên trường phù hợp với JSON
+      posterPath: json["poster_path"],
+      runTime: json["runtime"],
+      // Đảm bảo tên trường phù hợp với JSON
       releaseDate: json["release_date"], // Đảm bảo tên trường phù hợp với JSON
       voteAverage: json["vote_average"]
           ?.toDouble(), // Đảm bảo tên trường phù hợp với JSON

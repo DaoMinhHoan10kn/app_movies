@@ -1,3 +1,4 @@
+import 'package:app_movies/models/review.dart';
 import 'package:dio/dio.dart';
 import 'package:app_movies/data/constants.dart';
 import 'package:app_movies/models/movies.dart';
@@ -93,6 +94,22 @@ class Api {
       if (response.statusCode == 200) {
         final decodedData = response.data;
         return Movies.fromJson(decodedData);
+      } else {
+        throw Exception('Something happened');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
+    }
+  }
+
+  Future<List<Review>> getReviewMovie(int movieId) async {
+    final String detailUrl =
+        'https://api.themoviedb.org/3/movie/$movieId/reviews?api_key=${Constants.apiKey}';
+    try {
+      final response = await dio.get(detailUrl);
+      if (response.statusCode == 200) {
+        final decodedData = response.data['results'] as List;
+        return decodedData.map((review) => Review.fromJson(review)).toList();
       } else {
         throw Exception('Something happened');
       }
