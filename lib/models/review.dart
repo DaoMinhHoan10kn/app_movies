@@ -1,8 +1,8 @@
 class Review {
   final String author;
   final String content;
-  final String createAt;
-  final String url;
+  final String? createAt;
+  final String? url;
 
   Review(
       {required this.author,

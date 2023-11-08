@@ -109,11 +109,14 @@ class Api {
       final response = await dio.get(detailUrl);
       if (response.statusCode == 200) {
         final decodedData = response.data['results'] as List;
+        print('=>>>>>>>>>> res $decodedData');
         return decodedData.map((review) => Review.fromJson(review)).toList();
       } else {
+        print('=>>>> error');
         throw Exception('Something happened');
       }
     } catch (e) {
+      print('=>>>> error 1 $e');
       throw Exception('Error: $e');
     }
   }

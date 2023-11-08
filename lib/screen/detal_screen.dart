@@ -48,9 +48,11 @@ class _DetailsScreenState extends State<DetailsScreen>
     try {
       final List<Review> reviews = await Api().getReviewMovie(widget.movieId);
       print('Fetched Movie Reviews: $reviews');
+      //json_anotation
+
       setState(() {
         reviewList = reviews;
-        print(reviewList);
+        print('=>>>>>>>>>>>>>>>>>>> $reviewList');
       });
     } catch (e) {
       // Handle the error
