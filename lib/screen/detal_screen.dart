@@ -3,7 +3,6 @@ import 'package:app_movies/data/constants.dart';
 import 'package:app_movies/models/movies.dart';
 import 'package:app_movies/models/review.dart';
 import 'package:app_movies/provider/watch_list_provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -82,7 +81,7 @@ class _DetailsScreenState extends State<DetailsScreen>
         ),
         actions: [
           IconButton(
-            onPressed: toggleWatchList, // Sử dụng hàm để thêm/xóa xem sau
+            onPressed: toggleWatchList,
             icon: Icon(
               isList ? Icons.bookmark : Icons.bookmark_outlined,
             ),
@@ -91,7 +90,7 @@ class _DetailsScreenState extends State<DetailsScreen>
         backgroundColor: const Color(0xFF242A32),
       ),
       body: DefaultTabController(
-        length: 4, // Number of tabs
+        length: 4,
         child: Stack(
           children: [
             Column(
@@ -251,10 +250,10 @@ class _DetailsScreenState extends State<DetailsScreen>
             ),
             Positioned(
               top: 260,
-              right: 61,
+              left: 141,
               child: Container(
-                width: 200,
-                padding: const EdgeInsets.symmetric(vertical: 5),
+                width: 190,
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 child: Align(
                   child: Text(
                     movieDetails?.title ?? '',
